@@ -18,12 +18,12 @@
 
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+            @include('layouts.components.navigation')
 
             <section class="grid grid-cols-6 min-h-screen">
                 <div>
-                    {{-- Dashboard Menu --}}
-                    @include('layouts.dashboard')
+                    {{-- Side Menu --}}
+                    @include('layouts.components.side-menu')
                 </div>
 
                 <div class="col-span-5">

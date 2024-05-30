@@ -12,8 +12,5 @@
                 {{ 'Home 2' }}
             </x-dashboard.dashboard-link>
         </li>
-
-
     </ul>
-
 </nav>

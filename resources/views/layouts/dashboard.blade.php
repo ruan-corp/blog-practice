@@ -6,7 +6,6 @@
                 {{ 'Home' }}
             </x-dashboard.dashboard-link>
         </li>
-
         <li>
             <x-dashboard.dashboard-link :href="route('home')">
                 {{ 'Home 2' }}

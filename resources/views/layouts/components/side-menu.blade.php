@@ -2,14 +2,14 @@
     <ul>
         {{-- Test Link --}}
         <li>
-            <x-dashboard.dashboard-link :href="route('home')">
+            <x-side-menu.side-menu-link :href="route('home')">
                 {{ 'Home' }}
-            </x-dashboard.dashboard-link>
+            </x-side-menu.side-menu-link>
         </li>
         <li>
-            <x-dashboard.dashboard-link :href="route('home')">
-                {{ 'Home 2' }}
-            </x-dashboard.dashboard-link>
+            <x-side-menu.side-menu-link :href="route('home')">
+                {{ 'Categorias' }}
+            </x-side-menu.side-menu-link>
         </li>
     </ul>
 </nav>

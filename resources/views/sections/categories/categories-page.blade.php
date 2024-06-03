@@ -11,17 +11,17 @@
         </div>
         <ul class="mt-6">
             @foreach ($categories as $category)
-                <li class="grid justify-items-center grid-cols-4 gap-2 border-b py-4">
+                <li class="grid justify-items-center items-center grid-cols-4 gap-2 border-b py-4">
                     <h4>{{ $category->name }}</h4>
                     <p class="text-ellipsis h-12 overflow-hidden">{{ $category->description }}</p>
                     <p>{{ $category->slug }}</p>
-                    <div>
-                        <button class="text-white w-20 bg-blue-600 py-2 rounded-md transition-all hover:bg-blue-800">
+                    <div class="flex gap-2">
+                        <a class="edit-button" href="{{ route('categories.show', $category->id) }}">
                             Editar
-                        </button>
-                        <button class="text-white w-20 bg-red-600 py-2 rounded-md transition-all hover:bg-red-800">
+                        </a>
+                        <a href="" class="delete-button">
                             Excluir
-                        </button>
+                        </a>
                     </div>
                 </li>
             @endforeach

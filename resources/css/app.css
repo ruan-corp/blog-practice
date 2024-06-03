@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.edit-button{
+    @apply
+    text-white  bg-blue-600 p-2 rounded-md transition-all hover:bg-blue-800
+}
+
+.delete-button{
+    @apply
+    text-white min-w-14 bg-red-600 p-2 rounded-md transition-all hover:bg-red-800
+}

@@ -31,7 +31,7 @@ class ValidateCategory extends FormRequest
     {
         return [
             'name.required' => 'É necessário um nome',
-            'name.unique' => 'Nome deve ser unico',
+            'name.unique' => 'Já existe uma categoria com este nome',
             'description.max' => 'Limite de 255 caracteres'
         ];
     }

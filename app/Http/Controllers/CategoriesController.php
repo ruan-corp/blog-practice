@@ -23,10 +23,7 @@ class CategoriesController extends Controller
 
     public function store(ValidateCategory $request)
     {
-        $request->validate([
-            'name' => 'required|unique:categories,name|max:255',
-            'description' => 'nullable|max:255',
-        ]);
+        $request->validated();
 
         $category = new Categories();
         $category->name = $request->name;
@@ -34,6 +31,37 @@ class CategoriesController extends Controller
         $category->slug = Str::slug($request->name);
         $category->save();
 
-        return redirect()->back()->with('success', 'Categoria Criada com successo');
+        return redirect()->back()->with('success', 'Categoria criada com successo');
+    }
+
+    public function show($id)
+    {
+        $category = Categories::find($id);
+
+        return view('sections.categories.edit-category', ['category' => $category]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $category = Categories::find($id);
+
+        if ($category->name == $request->name && $category->description == $request->description) {
+            return redirect()->back()->with('success', 'Nenhuma mudança feita');
+        }
+
+        $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'nullable|max:255',
+        ]);
+
+        if ($category->name != $request->name) {
+            $category->name = $request->name;
+        }
+        if ($category->description != $request->description) {
+            $category->description = $request->description;
+        }
+
+        $category->save();
+        return redirect()->back()->with('success', 'Categoria editada com successo');
     }
 }

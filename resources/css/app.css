@@ -12,3 +12,7 @@
     @apply
     text-white min-w-14 bg-red-600 p-2 rounded-md transition-all hover:bg-red-800
 }
+
+.main-container-height{
+    max-height: calc(100vh - 5rem);
+}

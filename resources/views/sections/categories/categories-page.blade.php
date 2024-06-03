@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2>Lista de Categorias</h2>
+        Lista de Categorias
     </x-slot>
-    <div class="px-4">
+    <div>
         <div class="grid justify-items-center grid-cols-4 gap-2 py-1 text-lg font-semibold border-y-2">
             <p>Categoria</p>
             <p>Descrição</p>

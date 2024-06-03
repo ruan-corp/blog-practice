@@ -18,27 +18,29 @@
 
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.components.navigation')
+            {{-- @include('layouts.components.navigation') --}}
 
             <section class="grid grid-cols-6 min-h-screen">
+                {{-- Side Menu --}}
                 <div>
-                    {{-- Side Menu --}}
                     @include('layouts.components.side-menu')
                 </div>
 
+
+                {{-- Main content container --}}
                 <div class="col-span-5">
                     <!-- Page Heading -->
                     @isset($header)
                         <header class="bg-white shadow">
-                            <div class="flex justify-center py-6 px-4 font-semibold text-xl text-gray-800 leading-tight">
-                                {{ $header }}
+                            <div class="py-6 px-4 font-semibold text-xl text-gray-800 leading-tight">
+                                <h2 class="text-xl text-center w-full">{{ $header }}</h2>
                             </div>
                         </header>
                     @endisset
 
 
                     <!-- Page Content -->
-                    <main class="p-2">
+                    <main class="p-2 overflow-y-auto main-container-height">
                         {{ $slot }}
                     </main>
                 </div>

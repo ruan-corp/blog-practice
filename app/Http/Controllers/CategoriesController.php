@@ -56,6 +56,7 @@ class CategoriesController extends Controller
 
         if ($category->name != $request->name) {
             $category->name = $request->name;
+            $category->slug = Str::slug($request->name);
         }
         if ($category->description != $request->description) {
             $category->description = $request->description;
@@ -63,5 +64,14 @@ class CategoriesController extends Controller
 
         $category->save();
         return redirect()->back()->with('success', 'Categoria editada com successo');
+    }
+
+    public function destroy($id)
+    {
+        $category = Categories::find($id);
+
+        if ($category->delete()) {
+            return redirect()->back()->with('success', 'Categoria excluida com successo');
+        }
     }
 }

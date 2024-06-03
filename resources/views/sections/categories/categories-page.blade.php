@@ -19,9 +19,13 @@
                         <a class="edit-button" href="{{ route('categories.show', $category->id) }}">
                             Editar
                         </a>
-                        <a href="" class="delete-button">
-                            Excluir
-                        </a>
+                        <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
+                            @csrf
+                            @method('delete')
+                            <button class="delete-button">
+                                Excluir
+                            </button>
+                        </form>
                     </div>
                 </li>
             @endforeach

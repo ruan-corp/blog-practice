@@ -20,6 +20,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('/create', [CategoriesController::class, 'store'])->name('create');
         Route::get('/edit/{id}', [CategoriesController::class, 'show'])->name('show');
         Route::patch('/edit/{id}', [CategoriesController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [CategoriesController::class, 'destroy'])->name('destroy');
     });
 });
 

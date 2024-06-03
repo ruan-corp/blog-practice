@@ -13,7 +13,7 @@
         </li>
 
         <li>
-            <x-side-menu.side-menu-link :href="route('categories.create')">
+            <x-side-menu.side-menu-link :href="route('categories.createCategory')">
                 {{ 'Criar Categoria' }}
             </x-side-menu.side-menu-link>
         </li>

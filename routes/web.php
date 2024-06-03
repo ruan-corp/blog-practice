@@ -16,7 +16,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::prefix('categories')->name('categories.')->group(function () {
         Route::get('/', [CategoriesController::class, 'index'])->name('categories');
-        Route::get('/create', [CategoriesController::class, 'createCategory'])->name('create');
+        Route::get('/create', [CategoriesController::class, 'createCategory'])->name('createCategory');
+        Route::post('/create', [CategoriesController::class, 'store'])->name('create');
     });
 });
 

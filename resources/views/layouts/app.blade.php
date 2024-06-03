@@ -36,6 +36,7 @@
                         </header>
                     @endisset
 
+
                     <!-- Page Content -->
                     <main class="p-2">
                         {{ $slot }}

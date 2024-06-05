@@ -10,6 +10,9 @@
             <p>Ações</p>
         </div>
         <ul class="mt-6">
+            @if ($categories)
+                <script src="{{ asset('js/categorias/confirm-delete.js') }}" defer></script>
+            @endif
             @foreach ($categories as $category)
                 <li class="grid justify-items-center items-center grid-cols-4 gap-2 border-b py-4">
                     <h4>{{ $category->name }}</h4>
@@ -19,7 +22,8 @@
                         <a class="edit-button" href="{{ route('categories.show', $category->id) }}">
                             Editar
                         </a>
-                        <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
+                        <form method="POST" action="{{ route('categories.destroy', $category->id) }}" class="delete"
+                            name="{{ $category->name }}">
                             @csrf
                             @method('delete')
                             <button class="delete-button">

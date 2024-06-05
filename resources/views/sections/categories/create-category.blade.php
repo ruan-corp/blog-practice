@@ -2,7 +2,6 @@
     <x-slot name="header">
         {{ 'Criar Categoria' }}
     </x-slot>
-    <x-success />
 
     <form method="POST" action="{{ route('categories.create') }}" class="flex justify-center">
         @csrf

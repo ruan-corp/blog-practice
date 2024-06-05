@@ -1,8 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2>Editar Categoria</h2>
+        Editar Categoria
     </x-slot>
-    <x-success />
 
     <form method="POST" action="{{ route('categories.update', ['id' => $category->id]) }}" class="flex justify-center">
         @csrf

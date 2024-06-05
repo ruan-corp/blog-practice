@@ -28,7 +28,7 @@
 
 
                 {{-- Main content container --}}
-                <div class="col-span-5">
+                <div class="col-span-5 relative">
                     <!-- Page Heading -->
                     @isset($header)
                         <header class="bg-white shadow">
@@ -38,6 +38,8 @@
                         </header>
                     @endisset
 
+                    {{-- Notification Message --}}
+                    <x-success />
 
                     <!-- Page Content -->
                     <main class="p-2 overflow-y-auto main-container-height">
@@ -45,7 +47,6 @@
                     </main>
                 </div>
             </section>
-
         </div>
     </body>
 

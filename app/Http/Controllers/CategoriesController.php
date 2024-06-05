@@ -31,7 +31,7 @@ class CategoriesController extends Controller
         $category->slug = Str::slug($request->name);
         $category->save();
 
-        return redirect()->back()->with('success', 'Categoria criada com successo');
+        return redirect()->route('categories.categories')->with('success', 'Categoria criada com successo');
     }
 
     public function show($id)

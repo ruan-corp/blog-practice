@@ -23,15 +23,16 @@ class CategoriesController extends Controller
 
     public function store(ValidateCategory $request)
     {
+        $request->merge(['slug' => Str::slug($request->name)]);
         $request->validated();
 
         $category = new Categories();
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->slug = Str::slug($request->name);
+        $category->slug = $request->slug;
         $category->save();
 
-        return redirect()->back()->with('success', 'Categoria criada com successo');
+        return redirect()->route('categories.categories')->with('success', 'Categoria criada com successo');
     }
 
     public function show($id)
@@ -41,7 +42,7 @@ class CategoriesController extends Controller
         return view('sections.categories.edit-category', ['category' => $category]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ValidateCategory $request, $id)
     {
         $category = Categories::find($id);
 
@@ -49,14 +50,12 @@ class CategoriesController extends Controller
             return redirect()->back()->with('success', 'Nenhuma mudança feita');
         }
 
-        $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'nullable|max:255',
-        ]);
+        $request->merge(['slug' => Str::slug($request->name)]);
+        $request->validated();
 
         if ($category->name != $request->name) {
             $category->name = $request->name;
-            $category->slug = Str::slug($request->name);
+            $category->slug = $request->slug;
         }
         if ($category->description != $request->description) {
             $category->description = $request->description;

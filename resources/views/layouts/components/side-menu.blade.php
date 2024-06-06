@@ -1,22 +1,29 @@
+@php
+    function checkActiveUrl($url)
+    {
+        return request()->is($url) ? 'active-link' : '';
+    }
+@endphp
+
 <nav class="bg-blue-950 h-full text-white">
     <div class="bg-blue-900 shadow">
         <a href="{{ route('home') }}" class="py-6 flex justify-center w-full h-full text-xl font-bold">Home</a>
     </div>
     <ul class="p-2">
         <li>
-            <x-side-menu.side-menu-link :href="route('categories.categories')">
+            <x-side-menu.side-menu-link :href="route('categories.categories')" class=" {{ checkActiveUrl('admin/categories') }}">
                 {{ 'Categorias' }}
             </x-side-menu.side-menu-link>
         </li>
 
         <li>
-            <x-side-menu.side-menu-link :href="route('categories.createCategory')">
+            <x-side-menu.side-menu-link :href="route('categories.createCategory')" class="{{ checkActiveUrl('admin/categories/create') }}">
                 {{ 'Criar Categoria' }}
             </x-side-menu.side-menu-link>
         </li>
 
         <li>
-            <x-side-menu.side-menu-link :href="route('profile.edit')">
+            <x-side-menu.side-menu-link :href="route('profile.edit')" class="{{ checkActiveUrl('admin/profile') }}">
                 {{ Auth::user()->name }}
             </x-side-menu.side-menu-link>
         </li>

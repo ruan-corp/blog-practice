@@ -1,4 +1,4 @@
-const forms = document.querySelectorAll('.delete');
+const forms = document.querySelectorAll('.delete-category');
 forms.forEach(form => {
     form.addEventListener("submit", function(event) {
         const confirmation = confirm(`Deseja mesmo excluir a categoria '${form.name}' ?`);

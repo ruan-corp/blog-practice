@@ -1,3 +1,5 @@
+@section('title', 'Criar Categoria')
+
 <x-app-layout>
     <x-slot name="header">
         {{ 'Criar Categoria' }}

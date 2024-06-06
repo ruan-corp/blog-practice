@@ -16,3 +16,8 @@
 .main-container-height{
     max-height: calc(100vh - 5rem);
 }
+
+.active-link {
+    @apply
+    text-gray-400 border-gray-400
+}

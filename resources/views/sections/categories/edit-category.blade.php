@@ -1,3 +1,5 @@
+@section('title', 'Editar Categoria')
+
 <x-app-layout>
     <x-slot name="header">
         Editar Categoria

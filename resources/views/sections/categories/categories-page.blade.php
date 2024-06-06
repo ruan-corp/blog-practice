@@ -1,3 +1,5 @@
+@section('title', 'Categorias')
+
 <x-app-layout>
     <x-slot name="header">
         Lista de Categorias
@@ -41,5 +43,4 @@
                 @endforeach
             </ul>
         </div>
-    @endif
 </x-app-layout>

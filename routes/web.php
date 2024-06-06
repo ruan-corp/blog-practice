@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -24,5 +25,6 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     });
 });
 
+Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
 require __DIR__ . '/auth.php';

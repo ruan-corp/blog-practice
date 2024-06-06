@@ -1,29 +1,30 @@
+@section('title', 'Editar Categoria')
+
 <x-app-layout>
     <x-slot name="header">
-        <h2>Editar Categoria</h2>
+        Editar Categoria
     </x-slot>
-    <x-success />
 
     <form method="POST" action="{{ route('categories.update', ['id' => $category->id]) }}" class="flex justify-center">
         @csrf
         @method('PATCH')
-
         <x-forms.form-container>
+            <x-forms.form-description title="Editar Categoria" description="Trocar nome ou descrição da categoria" />
+
             <x-forms.input-container>
                 <div>
-                    <label for="name" class="text-lg font-medium">Nome da Categoria</label>
+                    <label for="name" class="input__label">Nome da Categoria</label>
                 </div>
-                <input type="text" name="name" id="name" class="bg-gray-100 rounded"
-                    value="{{ $category->name }}">
+                <input type="text" name="name" id="name" class="form__input" value="{{ $category->name }}">
 
                 <x-inputs.input-error fieldIdentifier="name" />
             </x-forms.input-container>
 
             <x-forms.input-container>
                 <div>
-                    <label for="description" class="text-lg font-medium">Descrição</label>
+                    <label for="description" class="input__label">Descrição</label>
                 </div>
-                <textarea name="description" id="description" rows="5" cols="30" class="rounded bg-gray-100">{{ $category->description }}</textarea>
+                <textarea name="description" id="description" rows="5" cols="30" class="form__input">{{ $category->description }}</textarea>
 
             </x-forms.input-container>
 

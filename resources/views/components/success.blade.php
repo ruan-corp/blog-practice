@@ -1,7 +1,9 @@
-@if (session()->has('success'))
-    <div class=" flex justify-center items-center m-2">
-        <p class="bg-green-300 text-gray-700 text-xl font-bold p-5 rounded shadow-xl">
-            {{ session()->get('success') }}
+@if (session('success'))
+    <script src="{{ asset('js/success-message.js') }}" defer></script>
+
+    <div class="absolute left-1/4 right-1/4 my-2 cursor-pointer" id="notification-message">
+        <p class="bg-green-300 text-gray-700 text-center text-xl font-bold p-5 rounded shadow-xl">
+            {{ session('success') }}
         </p>
     </div>
 @endif

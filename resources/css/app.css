@@ -3,21 +3,31 @@
 @tailwind utilities;
 
 
-.edit-button{
+.edit__button{
     @apply
     text-white  bg-blue-600 p-2 rounded-md transition-all hover:bg-blue-800
 }
 
-.delete-button{
+.delete__button{
     @apply
     text-white min-w-14 bg-red-600 p-2 rounded-md transition-all hover:bg-red-800
 }
 
-.main-container-height{
+.main__container__height{
     max-height: calc(100vh - 5rem);
 }
 
-.active-link {
+.active__link {
     @apply
     text-gray-400 border-gray-400
+}
+
+.input__label{
+    @apply
+    font-medium text-gray-700
+}
+
+.form__input {
+    @apply
+    border-gray-300 rounded-md shadow-sm mt-1
 }

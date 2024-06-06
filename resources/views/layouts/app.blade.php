@@ -39,7 +39,7 @@
                     <x-success />
 
                     <!-- Page Content -->
-                    <main class="p-2 overflow-y-auto main-container-height">
+                    <main class="p-2 overflow-y-auto main__container__height h-full">
                         {{ $slot }}
                     </main>
                 </div>

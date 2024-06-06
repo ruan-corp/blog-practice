@@ -1,3 +1,3 @@
-<div class="flex items-center flex-col gap-5 p-8 shadow rounded w-1/2 bg-white">
+<div class="flex flex-col gap-5 shadow rounded p-4 h-full w-full bg-white">
     {{ $slot }}
 </div>

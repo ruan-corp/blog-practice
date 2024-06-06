@@ -1,13 +1,14 @@
 @php
     function checkActiveUrl($url)
     {
-        return request()->is($url) ? 'active-link' : '';
+        return request()->is($url) ? 'active__link' : '';
     }
 @endphp
 
 <nav class="bg-blue-950 h-full text-white">
     <div class="bg-blue-900 shadow">
-        <a href="{{ route('home') }}" class="py-6 flex justify-center w-full h-full text-xl font-bold">Home</a>
+        <a href="{{ route('home') }}"
+            class="py-6 flex justify-center w-full h-full text-xl font-bold hover:text-gray-400 hover:bg-blue-800 transition-all duration-500">Home</a>
     </div>
     <ul class="p-2">
         <li>

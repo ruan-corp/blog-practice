@@ -21,14 +21,14 @@
                     <p class="">{{ $category->description }}</p>
                     <p>{{ $category->slug }}</p>
                     <div class="flex gap-2">
-                        <a class="edit-button" href="{{ route('categories.show', $category->id) }}">
+                        <a class="edit__button" href="{{ route('categories.show', $category->id) }}">
                             Editar
                         </a>
                         <form method="POST" action="{{ route('categories.destroy', $category->id) }}"
                             class="delete-category" name="{{ $category->name }}">
                             @csrf
                             @method('delete')
-                            <button class="delete-button">
+                            <button class="delete__button">
                                 Excluir
                             </button>
                         </form>

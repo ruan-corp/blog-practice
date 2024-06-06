@@ -5,23 +5,25 @@
         {{ 'Criar Categoria' }}
     </x-slot>
 
-    <form method="POST" action="{{ route('categories.create') }}" class="flex justify-center">
+    <form method="POST" action="{{ route('categories.create') }}" class="h-full">
         @csrf
         <x-forms.form-container>
+            <x-forms.form-description title="Criação de Categoria" description="Nome e Descrição da categoria" />
+
             <x-forms.input-container>
                 <div>
-                    <label for="name" class="text-lg font-medium">Nome da Categoria</label>
+                    <label for="name" class="input__label">Nome da Categoria</label>
                 </div>
-                <input type="text" name="name" id="name" class="rounded bg-gray-100">
+                <input type="text" name="name" id="name" class="form__input">
 
                 <x-inputs.input-error fieldIdentifier="name" />
             </x-forms.input-container>
 
             <x-forms.input-container>
                 <div>
-                    <label for="description" class="text-lg font-medium">Descrição</label>
+                    <label for="description" class="input__label">Descrição</label>
                 </div>
-                <textarea name="description" id="description" rows="5" cols="30" class="rounded bg-gray-100"></textarea>
+                <textarea name="description" id="description" rows="5" cols="30" class="rounded"></textarea>
 
                 <x-inputs.input-error fieldIdentifier="description" />
             </x-forms.input-container>

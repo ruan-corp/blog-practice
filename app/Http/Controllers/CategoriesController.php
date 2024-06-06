@@ -23,12 +23,13 @@ class CategoriesController extends Controller
 
     public function store(ValidateCategory $request)
     {
+        $request->merge(['slug' => Str::slug($request->name)]);
         $request->validated();
 
         $category = new Categories();
         $category->name = $request->name;
         $category->description = $request->description;
-        $category->slug = Str::slug($request->name);
+        $category->slug = $request->slug;
         $category->save();
 
         return redirect()->route('categories.categories')->with('success', 'Categoria criada com successo');

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidateCategory extends FormRequest
+class CategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,22 @@ class ValidateCategory extends FormRequest
         return [
             'name' => 'required|unique:categories,name|max:255',
             'description' => 'nullable|max:255',
-            'slug' => 'unique:categories,slug'
         ];
     }
+
+    // public function rules(): array
+    // {
+    //     $rules = [
+    //         'name' => 'required|max:255',
+    //         'description' => 'nullable|max:255',
+    //     ];
+
+    //     if ($this->has('name')) {
+    //         $rules['name'] .= '|' . Rule::unique('categories')->ignore($this->id);
+    //     };
+
+    //     return $rules;
+    // }
 
     public function messages(): array
     {
@@ -34,7 +47,6 @@ class ValidateCategory extends FormRequest
             'name.required' => 'É necessário um nome',
             'name.unique' => 'Já existe uma categoria com este nome',
             'description.max' => 'Limite de 255 caracteres',
-            'slug.unique' => 'Por favor escolha outro nome'
         ];
     }
 }

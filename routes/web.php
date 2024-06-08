@@ -17,8 +17,8 @@ Route::middleware('auth')->prefix('admin')->group(function () {
 
     Route::prefix('categories')->name('categories.')->group(function () {
         Route::get('/', [CategoriesController::class, 'index'])->name('categories');
-        Route::get('/create', [CategoriesController::class, 'createCategory'])->name('createCategory');
-        Route::post('/create', [CategoriesController::class, 'store'])->name('create');
+        Route::get('/create', [CategoriesController::class, 'create'])->name('create');
+        Route::post('/create', [CategoriesController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [CategoriesController::class, 'show'])->name('show');
         Route::patch('/edit/{id}', [CategoriesController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [CategoriesController::class, 'destroy'])->name('destroy');

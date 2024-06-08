@@ -5,7 +5,11 @@
         Editar Categoria
     </x-slot>
 
-    <form method="POST" action="{{ route('categories.update', ['id' => $category->id]) }}" class="flex justify-center">
+    <form 
+        method="POST" 
+        action="{{ route('categories.update', ['id' => $category->id]) }}"
+        class="flex justify-center"
+     >
         @csrf
         @method('PATCH')
         <x-forms.form-container>

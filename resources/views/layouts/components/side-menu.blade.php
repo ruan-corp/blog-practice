@@ -18,7 +18,7 @@
         </li>
 
         <li>
-            <x-side-menu.side-menu-link :href="route('categories.createCategory')" class="{{ checkActiveUrl('admin/categories/create') }}">
+            <x-side-menu.side-menu-link :href="route('categories.create')" class="{{ checkActiveUrl('admin/categories/create') }}">
                 {{ 'Criar Categoria' }}
             </x-side-menu.side-menu-link>
         </li>

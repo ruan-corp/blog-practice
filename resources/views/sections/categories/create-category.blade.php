@@ -5,7 +5,11 @@
         {{ 'Criar Categoria' }}
     </x-slot>
 
-    <form method="POST" action="{{ route('categories.create') }}" class="h-full">
+    <form 
+        method="POST" 
+        action="{{ route('categories.create') }}" 
+        class="h-full"
+    >
         @csrf
         <x-forms.form-container>
             <x-forms.form-description title="Criação de Categoria" description="Nome e Descrição da categoria" />

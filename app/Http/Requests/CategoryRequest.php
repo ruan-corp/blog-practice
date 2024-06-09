@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CategoryRequest extends FormRequest
 {
@@ -19,27 +20,20 @@ class CategoryRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+
     public function rules(): array
     {
-        return [
-            'name' => 'required|unique:categories,name|max:255',
+        $rules = [
+            'name' => 'required|max:255',
             'description' => 'nullable|max:255',
         ];
+
+        if ($this->has('name')) {
+            $rules['name'] .= '|' . Rule::unique('categories')->ignore($this->id);
+        };
+
+        return $rules;
     }
-
-    // public function rules(): array
-    // {
-    //     $rules = [
-    //         'name' => 'required|max:255',
-    //         'description' => 'nullable|max:255',
-    //     ];
-
-    //     if ($this->has('name')) {
-    //         $rules['name'] .= '|' . Rule::unique('categories')->ignore($this->id);
-    //     };
-
-    //     return $rules;
-    // }
 
     public function messages(): array
     {

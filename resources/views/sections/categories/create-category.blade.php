@@ -8,10 +8,12 @@
     <form
         action="{{ route('categories.create') }}"
         method="POST"
-        class="h-full">
+        class="h-full"
+    >
         @csrf
         <x-forms.category-form
             title="Criação de Categoria"
-            description="Nome e descrição da categoria" />
+            description="Nome e descrição da categoria"
+        />
     </form>
 </x-app-layout>

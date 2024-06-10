@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Listeners;
+namespace App\Listeners\Category;
 
 use App\Events\CategorySaving;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Str;
 
-class CreateSlug
+class GenerateSlugListener
 {
     /**
      * Create the event listener.

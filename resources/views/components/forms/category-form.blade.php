@@ -8,31 +8,42 @@
 
     <div class="form-text-container">
         <div>
-            <label for="name" class="input-label">Nome da Categoria</label>
+            <label
+                for="name"
+                class="input-label"
+            >Nome da Categoria</label>
         </div>
         <input
-               type="text"
-               name="name"
-               id="name"
-               class="form-input"
-               value="{{ $category->name ?? '' }}">
+            type="text"
+            name="name"
+            id="name"
+            class="form-input"
+            value="{{ $category->name ?? '' }}"
+        >
         <x-inputs.input-error fieldIdentifier="name" />
     </div>
 
     <div class="form-text-container">
         <div>
-            <label for="description" class="input-label">Descrição</label>
+            <label
+                for="description"
+                class="input-label"
+            >Descrição</label>
         </div>
         <textarea
-                  name="description"
-                  id="description"
-                  cols="30"
-                  rows="5"
-                  class="form-input">{{ $category->description ?? '' }}</textarea>
+            name="description"
+            id="description"
+            cols="30"
+            rows="5"
+            class="form-input"
+        >{{ $category->description ?? '' }}</textarea>
     </div>
 
     <div class="flex">
-        <button type="submit" class="green-button">
+        <button
+            type="submit"
+            class="green-button"
+        >
             Confirmar
         </button>
     </div>

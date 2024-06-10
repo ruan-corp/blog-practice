@@ -25,6 +25,4 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     });
 });
 
-Route::get('/', [AuthenticatedSessionController::class, 'create']);
-
 require __DIR__ . '/auth.php';

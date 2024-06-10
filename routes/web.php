@@ -9,12 +9,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
+    // Rotas de perfil
     Route::prefix('profile')->name('profile.')->group(function () {
         Route::get('/', [ProfileController::class, 'edit'])->name('edit');
         Route::patch('/', [ProfileController::class, 'update'])->name('update');
         Route::delete('/', [ProfileController::class, 'destroy'])->name('destroy');
     });
 
+    // Rotas de categoria
     Route::prefix('categories')->name('categories.')->group(function () {
         Route::get('/', [CategoriesController::class, 'index'])->name('categories');
         Route::get('/create', [CategoriesController::class, 'create'])->name('create');

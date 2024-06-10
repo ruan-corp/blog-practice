@@ -33,6 +33,24 @@
 
         <li>
             <x-side-menu.side-menu-link
+                :href="route('posts.posts')"
+                class="{{ checkActiveUrl('admin/posts/posts') }}"
+            >
+                {{ 'Posts' }}
+            </x-side-menu.side-menu-link>
+        </li>
+
+        <li>
+            <x-side-menu.side-menu-link
+                :href="route('posts.create')"
+                class="{{ checkActiveUrl('admin/posts/create') }}"
+            >
+                {{ 'Criar Post' }}
+            </x-side-menu.side-menu-link>
+        </li>
+
+        <li>
+            <x-side-menu.side-menu-link
                 :href="route('profile.edit')"
                 class="{{ checkActiveUrl('admin/profile') }}"
             >

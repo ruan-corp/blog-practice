@@ -11,7 +11,9 @@ class PostsController extends Controller
 {
     public function index()
     {
-        return view("sections.posts.posts-page");
+        $posts = Post::query()->get();
+
+        return view("sections.posts.posts-page", ["posts" => $posts]);
     }
 
     public function create()

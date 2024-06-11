@@ -13,6 +13,7 @@
     >
 
     <title> @yield('title')</title>
+    @yield('head-imports')
 
     <!-- Fonts -->
     <link

@@ -6,7 +6,7 @@
     </x-slot>
 
     <div>
-        POSTAGENS
+
     </div>
 
 </x-app-layout>

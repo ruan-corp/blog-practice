@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Events\CategorySaving;
+use App\Events\PostSaving;
 use App\Listeners\Category\GenerateSlugListener;
+use App\Listeners\Post\GeneratePostSlugListener;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -12,6 +14,9 @@ class AppServiceProvider extends ServiceProvider
         CategorySaving::class => [
             GenerateSlugListener::class,
         ],
+        PostSaving::class => [
+            GeneratePostSlugListener::class
+        ]
     ];
 
     /**

@@ -35,7 +35,7 @@
                         <td>
                             <div class="flex justify-center gap-2">
                                 <a
-                                    href=""
+                                    href="{{ route('posts.show', $post->id) }}"
                                     class="edit-button"
                                 >Editar</a>
 

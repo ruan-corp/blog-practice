@@ -1,6 +1,6 @@
 @section('head-imports')
     <x-head.tinymce-config> </x-head.tinymce-config>
-@endsection @props(['categories'])
+@endsection @props(['categories', 'post'])
 
 <div class="flex flex-col gap-8">
     <div>
@@ -13,6 +13,7 @@
             name="title"
             id="title"
             class="form-input"
+            value="{{ $post->title ?? '' }}"
         />
         <div>
             <x-inputs.input-error fieldIdentifier="title" />
@@ -28,26 +29,57 @@
             name="category_id"
             id="category"
         >
-            @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
-            @endforeach
+            @if (isset($post))
+                @foreach ($categories as $category)
+                    <option
+                        value="{{ $category->id }}"
+                        {{ $category->id == $post->category_id ? 'selected' : '' }}
+                    >
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            @else
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            @endif
         </select>
         <div>
             <x-inputs.input-error fieldIdentifier="category_id" />
         </div>
     </div>
 
-    <div>
-        <label
-            for="published_at"
-            class="input-label"
-        >Publicado:</label>
-        <input
-            type="checkbox"
-            name="published_at"
-            id="published_at"
-        />
-    </div>
+    @if (isset($post) && !$post->published_at)
+        <div>
+            <label
+                for="published_at"
+                class="input-label"
+            >Publicado:</label>
+            <input
+                type="checkbox"
+                name="published_at"
+                id="published_at"
+            />
+        </div>
+    @elseif (!isset($post))
+        <div>
+            <label
+                for="published_at"
+                class="input-label"
+            >Publicado:</label>
+            <input
+                type="checkbox"
+                name="published_at"
+                id="published_at"
+            />
+        </div>
+    @else
+        <div>
+            <p>Post já publicado</p>
+        </div>
+    @endif
 
     <div>
         <div class="flex justify-center">
@@ -57,7 +89,7 @@
             name="content"
             id="editor-content"
             rows="40"
-        ></textarea>
+        >{{ $post->content ?? '' }}</textarea>
     </div>
 
     <div class="text-center">

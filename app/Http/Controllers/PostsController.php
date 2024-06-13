@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Post\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -14,6 +13,14 @@ class PostsController extends Controller
         $posts = Post::query()->get();
 
         return view("sections.posts.posts-page", ["posts" => $posts]);
+    }
+
+    public function show(int $id)
+    {
+        $post = Post::query()->findOrFail($id);
+        $categories = Category::query()->get();
+
+        return view("sections.posts.edit-post", ["post" => $post, "categories" => $categories]);
     }
 
     public function create()
@@ -27,18 +34,17 @@ class PostsController extends Controller
     {
         $validatedData = $request->validated();
 
-        $this->storePost($validatedData);
+        $post = Post::create($validatedData);
 
-        return redirect()->back()->with("success", "post criado com successo");
+        return redirect()->route('posts.posts')->with("success", "post criado com successo");
     }
 
-    private function storePost(array $validatedData)
+    public function update(PostRequest $postRequest)
     {
-        $post = new Post($validatedData);
-        $post->user_id = Auth::user()->id;
-        if (isset($validatedData["published_at"])) {
-            $post->published_at = now();
-        }
-        $post->save();
+        $post = Post::query()->findOrFail($postRequest->id);
+        $validatedData = $postRequest->validated();
+        $post->update($validatedData);
+
+        return redirect()->route('posts.posts')->with('success', 'Post editado com successo');
     }
 }

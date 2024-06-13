@@ -3,6 +3,7 @@
 namespace App\Listeners\Post;
 
 use App\Events\PostSaving;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 class GeneratePostSlugListener
@@ -21,5 +22,9 @@ class GeneratePostSlugListener
     public function handle(PostSaving $event)
     {
         $event->post->slug = Str::slug($event->post->title);
+        $event->post->user_id = Auth::user()->id;
+        if ($event->post->published_at == 'on') {
+            $event->post->published_at = now();
+        }
     }
 }

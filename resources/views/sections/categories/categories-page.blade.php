@@ -33,7 +33,7 @@
                                 <form
                                     method="POST"
                                     action="{{ route('categories.destroy', $category->id) }}"
-                                    class="delete-category-form"
+                                    class="confirm-delete-form"
                                     name="{{ $category->name }}"
                                 >
                                     @csrf
@@ -59,6 +59,6 @@
 </x-app-layout>
 
 <script
-    src="{{ asset('js/categorias/confirm-delete.js') }}"
+    src="{{ asset('js/confirm-delete.js') }}"
     defer
 ></script>

@@ -1,6 +1,7 @@
 @section('head-imports')
     <x-head.tinymce-config> </x-head.tinymce-config>
-@endsection @props(['categories', 'post'])
+@endsection
+@props(['categories', 'post'])
 
 <div class="flex flex-col gap-8">
     <div>
@@ -13,7 +14,7 @@
             name="title"
             id="title"
             class="form-input"
-            value="{{ $post->title ?? '' }}"
+            value="{{ $post->title ?? old('title') }}"
         />
         <div>
             <x-inputs.input-error fieldIdentifier="title" />
@@ -40,7 +41,10 @@
                 @endforeach
             @else
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">
+                    <option
+                        value="{{ $category->id }}"
+                        {{ old('category_id') == $category->id ? 'selected' : '' }}
+                    >
                         {{ $category->name }}
                     </option>
                 @endforeach
@@ -73,6 +77,7 @@
                 type="checkbox"
                 name="published_at"
                 id="published_at"
+                {{ old('published_at') ? 'checked' : '' }}
             />
         </div>
     @else
@@ -89,7 +94,7 @@
             name="content"
             id="editor-content"
             rows="40"
-        >{{ $post->content ?? '' }}</textarea>
+        >{{ $post->content ?? old('content') }}</textarea>
     </div>
 
     <div class="text-center">

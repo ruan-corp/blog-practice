@@ -34,7 +34,7 @@ class PostsController extends Controller
     {
         $validatedData = $request->validated();
 
-        $post = Post::create($validatedData);
+        Post::create($validatedData);
 
         return redirect()->route('posts.posts')->with("success", "post criado com successo");
     }
@@ -46,5 +46,12 @@ class PostsController extends Controller
         $post->update($validatedData);
 
         return redirect()->route('posts.posts')->with('success', 'Post editado com successo');
+    }
+
+    public function destroy(int $id)
+    {
+        $post = Post::query()->findOrFail($id);
+        $post->delete();
+        return redirect()->route('posts.posts')->with('success', 'Post deletado com successo');
     }
 }

@@ -34,6 +34,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('/create', [PostsController::class, 'store'])->name('store');
         Route::get('/edit/{id}', [PostsController::class, 'show'])->name('show');
         Route::post('/edit/{id}', [PostsController::class, 'update'])->name('update');
+        Route::post('/delete/{id}', [PostsController::class, 'destroy'])->name('destroy');
     });
 });
 

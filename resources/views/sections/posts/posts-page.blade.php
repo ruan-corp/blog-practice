@@ -39,9 +39,16 @@
                                     class="edit-button"
                                 >Editar</a>
 
-                                <button class="delete-button">
-                                    Remover
-                                </button>
+                                <form
+                                    action="{{ route('posts.destroy', $post->id) }}"
+                                    method="POST"
+                                    class="confirm-delete-form"
+                                >
+                                    @csrf
+                                    <button class="delete-button">
+                                        Remover
+                                    </button>
+                                </form>
                             </div>
                         </td>
                     </tr>
@@ -49,5 +56,6 @@
             </tbody>
         </table>
     </div>
-
 </x-app-layout>
+
+<script src="{{ asset('js/confirm-delete.js') }}"></script>

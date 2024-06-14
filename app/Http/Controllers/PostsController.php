@@ -36,7 +36,7 @@ class PostsController extends Controller
 
         Post::create($validatedData);
 
-        return redirect()->route('posts.posts')->with("success", "post criado com successo");
+        return redirect()->route('posts.posts')->with('message', ['success' => 'post criado com successo']);
     }
 
     public function update(PostRequest $postRequest)
@@ -45,13 +45,21 @@ class PostsController extends Controller
         $validatedData = $postRequest->validated();
         $post->update($validatedData);
 
-        return redirect()->route('posts.posts')->with('success', 'Post editado com successo');
+        return redirect()->route('posts.posts')->with('message', ['success' => 'Post atualizado com successo']);
     }
 
     public function destroy(int $id)
     {
-        $post = Post::query()->findOrFail($id);
-        $post->delete();
-        return redirect()->route('posts.posts')->with('success', 'Post deletado com successo');
+        try {
+            $post = Post::query()->findOrFail($id);
+            if (!$post->published_at) {
+                $post->delete();
+                return redirect()->route('posts.posts')->with('message', ['success' => 'Post removido com successo']);
+            } else {
+                return redirect()->back()->with('message', ['error' => 'Não se pode deletar posts já publicados']);
+            }
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('message', ['error' => 'Não foi possivel encontrar o post']);
+        }
     }
 }

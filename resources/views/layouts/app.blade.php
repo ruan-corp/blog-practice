@@ -49,7 +49,7 @@
                 @endisset
 
                 {{-- Notification Message --}}
-                <x-success />
+                <x-js.notification />
 
                 <!-- Page Content -->
                 <main class="p-2 overflow-y-auto main-container-height h-full">

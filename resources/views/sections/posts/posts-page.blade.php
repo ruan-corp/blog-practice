@@ -33,22 +33,24 @@
                             {{ $post->published_at ? $post->published_at : 'Não publicado' }}
                         </td>
                         <td>
-                            <div class="flex justify-center gap-2">
+                            <div class="flex justify-between mx-2">
                                 <a
                                     href="{{ route('posts.show', $post->id) }}"
                                     class="edit-button"
                                 >Editar</a>
 
-                                <form
-                                    action="{{ route('posts.destroy', $post->id) }}"
-                                    method="POST"
-                                    class="confirm-delete-form"
-                                >
-                                    @csrf
-                                    <button class="delete-button">
-                                        Remover
-                                    </button>
-                                </form>
+                                @if (!$post->published_at)
+                                    <form
+                                        action="{{ route('posts.destroy', $post->id) }}"
+                                        method="POST"
+                                        class="confirm-delete-form"
+                                    >
+                                        @csrf
+                                        <button class="delete-button">
+                                            Remover
+                                        </button>
+                                    </form>
+                                @endif
                             </div>
                         </td>
                     </tr>

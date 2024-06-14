@@ -25,7 +25,7 @@ class CategoriesController extends Controller
 
         Category::create($validatedData);
 
-        return redirect()->route('categories.categories')->with('success', 'Categoria criada com successo');
+        return redirect()->route('categories.categories')->with('message', ['success' => 'Categoria criada com successo']);
     }
 
     public function show(int $id)
@@ -41,7 +41,7 @@ class CategoriesController extends Controller
         $validatedData = $request->validated();
         $category->update($validatedData);
 
-        return redirect()->route('categories.categories')->with('success', 'Categoria editada com successo');
+        return redirect()->route('categories.categories')->with('message', ['success' => 'Categoria editada com successo']);
     }
 
     public function destroy(int $id)
@@ -49,7 +49,7 @@ class CategoriesController extends Controller
         $category = Category::query()->findOrFail($id);
 
         if ($category->delete()) {
-            return redirect()->back()->with('success', 'Categoria excluida com successo');
+            return redirect()->back()->with('message', ['success' => 'Categoria excluida com successo']);
         }
     }
 }

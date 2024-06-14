@@ -13,7 +13,7 @@
             type="text"
             name="title"
             id="title"
-            class="form-input"
+            class="form-input w-96"
             value="{{ $post->title ?? old('title') }}"
         />
         <div>
@@ -29,6 +29,7 @@
         <select
             name="category_id"
             id="category"
+            class="form-input w-96"
         >
             @if (isset($post))
                 @foreach ($categories as $category)

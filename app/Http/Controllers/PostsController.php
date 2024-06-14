@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Post\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
+use Throwable;
 
 class PostsController extends Controller
 {
@@ -17,10 +18,14 @@ class PostsController extends Controller
 
     public function show(int $id)
     {
-        $post = Post::query()->findOrFail($id);
-        $categories = Category::query()->get();
+        try {
+            $post = Post::query()->findOrFail($id);
+            $categories = Category::query()->get();
 
-        return view("sections.posts.edit-post", ["post" => $post, "categories" => $categories]);
+            return view("sections.posts.edit-post", ["post" => $post, "categories" => $categories]);
+        } catch (Throwable $th) {
+            return redirect()->back()->with("message", ["error" => "Não foi possivel encontrar o post"]);
+        }
     }
 
     public function create()
@@ -41,11 +46,15 @@ class PostsController extends Controller
 
     public function update(PostRequest $postRequest)
     {
-        $post = Post::query()->findOrFail($postRequest->id);
-        $validatedData = $postRequest->validated();
-        $post->update($validatedData);
+        try {
+            $post = Post::query()->findOrFail($postRequest->id);
+            $validatedData = $postRequest->validated();
+            $post->update($validatedData);
 
-        return redirect()->route('posts.posts')->with('message', ['success' => 'Post atualizado com successo']);
+            return redirect()->route('posts.posts')->with('message', ['success' => 'Post atualizado com successo']);
+        } catch (Throwable $th) {
+            return redirect()->back()->with('message', ['error' => 'Ocorreu algum erro por favor tente novamente']);
+        }
     }
 
     public function destroy(int $id)
@@ -58,7 +67,7 @@ class PostsController extends Controller
             } else {
                 return redirect()->back()->with('message', ['error' => 'Não se pode deletar posts já publicados']);
             }
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             return redirect()->back()->with('message', ['error' => 'Não foi possivel encontrar o post']);
         }
     }

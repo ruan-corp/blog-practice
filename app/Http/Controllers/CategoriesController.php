@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Category\CategoryRequest;
 use App\Models\Category;
+use Throwable;
 
 class CategoriesController extends Controller
 {
@@ -37,19 +38,27 @@ class CategoriesController extends Controller
 
     public function update(CategoryRequest $request)
     {
-        $category = Category::query()->findOrFail($request->id);
-        $validatedData = $request->validated();
-        $category->update($validatedData);
+        try {
+            $category = Category::query()->findOrFail($request->id);
+            $validatedData = $request->validated();
+            $category->update($validatedData);
 
-        return redirect()->route('categories.categories')->with('message', ['success' => 'Categoria editada com successo']);
+            return redirect()->route('categories.categories')->with('message', ['success' => 'Categoria editada com successo']);
+        } catch (Throwable $th) {
+            return redirect()->back()->with('message', ['error' => 'Não foi possivel encontrar a categoria']);
+        }
     }
 
     public function destroy(int $id)
     {
-        $category = Category::query()->findOrFail($id);
+        try {
+            $category = Category::query()->findOrFail($id);
 
-        if ($category->delete()) {
-            return redirect()->back()->with('message', ['success' => 'Categoria excluida com successo']);
+            if ($category->delete()) {
+                return redirect()->back()->with('message', ['success' => 'Categoria excluida com successo']);
+            }
+        } catch (Throwable $th) {
+            return redirect()->back()->with('message', ['error' => 'Não foi possivel encontrar a categoria']);
         }
     }
 }

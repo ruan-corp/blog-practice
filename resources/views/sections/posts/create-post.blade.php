@@ -5,15 +5,13 @@
         Criar Post
     </x-slot>
 
-    <div class="p-3 bg-white shadow rounded">
-        <form
-            action="{{ route('posts.store') }}"
-            method="POST"
-        >
-            @csrf
-            <x-forms.posts-form :categories="$categories">
+    <form
+        action="{{ route('posts.store') }}"
+        method="POST"
+    >
+        @csrf
+        <x-forms.posts-form :categories="$categories">
 
-            </x-forms.posts-form>
-        </form>
-    </div>
+        </x-forms.posts-form>
+    </form>
 </x-app-layout>

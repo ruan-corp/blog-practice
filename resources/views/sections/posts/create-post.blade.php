@@ -1,13 +1,10 @@
 @section('title', 'Criar Post')
 
 <x-app-layout>
-    <x-slot name="header">
-        Criar Post
-    </x-slot>
-
     <form
         action="{{ route('posts.store') }}"
         method="POST"
+        class="content-container"
     >
         @csrf
         <x-forms.posts-form :categories="$categories">

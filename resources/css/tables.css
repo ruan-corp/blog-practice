@@ -1,0 +1,25 @@
+.custom-tables {
+    @apply table-fixed;
+}
+
+.custom-tables tbody tr:nth-child(even) {
+    @apply bg-slate-200;
+}
+
+.custom-tables thead {
+    @apply bg-slate-300 h-14 text-lg;
+}
+
+.custom-tables tbody tr {
+    @apply text-center h-12;
+}
+
+.custom-tables,
+.custom-tables th,
+.custom-tables td {
+    @apply border border-slate-300;
+}
+
+.custom-tables-actions {
+    @apply flex justify-between mx-4;
+}

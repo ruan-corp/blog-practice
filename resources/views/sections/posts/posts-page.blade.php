@@ -1,14 +1,10 @@
 @section('title', 'Posts')
 
 <x-app-layout>
-    <x-slot name="header">
-        Lista de Posts
-    </x-slot>
-
-    <div>
-        <table class="w-full table-fixed">
+    <div class="content-container">
+        <table class="w-full custom-tables">
             <thead>
-                <tr class="border-y-2 h-10 text-lg">
+                <tr>
                     <th>ID</th>
                     <th>Titulo</th>
                     <th>Categoria</th>
@@ -19,7 +15,7 @@
 
             <tbody>
                 @foreach ($posts as $post)
-                    <tr class="text-center border-b h-20">
+                    <tr>
                         <td>
                             {{ $post->id }}
                         </td>

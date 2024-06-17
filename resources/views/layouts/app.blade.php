@@ -29,35 +29,20 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased">
-    <section class="grid grid-cols-6 min-h-screen bg-gray-200">
+<body class="font-sans antialiased bg-slate-200 h-screen min-h-screen ">
+    {{-- Notification Message --}}
+    <x-js.notification />
+
+    {{-- Main content container --}}
+    <div class="flex  h-full">
         {{-- Side Menu --}}
-        <div>
-            @include('layouts.components.side-menu')
-        </div>
+        @include('layouts.components.side-menu')
 
-        {{-- Main content container --}}
-        <div class="col-span-5 relative">
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-white shadow">
-                    <div class="py-6 px-4 font-semibold text-xl text-gray-800 leading-tight">
-                        <h2 class="text-xl text-center w-full">{{ $header }}</h2>
-                    </div>
-                </header>
-            @endisset
-
-            {{-- Notification Message --}}
-            <x-js.notification />
-
-            <!-- Page Content -->
-            <main class="p-2 overflow-y-auto main-container-height h-full">
-                <section class="main-content-container">
-                    {{ $slot }}
-                </section>
-            </main>
-        </div>
-    </section>
+        <!-- Page Content -->
+        <section class="p-4 overflow-y-auto w-full">
+            {{ $slot }}
+        </section>
+    </div>
 </body>
 
 </html>

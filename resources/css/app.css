@@ -1,9 +1,12 @@
+@import "side-menu.css";
+@import "tables.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .main-container-height {
-    max-height: calc(100vh - 5rem);
+    max-height: calc(100vh - 3rem);
 }
 
 /* Buttons */
@@ -13,10 +16,6 @@
 
 .delete-button {
     @apply text-white min-w-14 bg-red-600 p-2 rounded-md transition-all hover:bg-red-800;
-}
-
-.active-link {
-    @apply text-gray-400 border-gray-400;
 }
 
 .green-button {
@@ -38,4 +37,8 @@
 
 .main-content-container {
     @apply shadow rounded p-8 min-h-full min-w-full bg-white;
+}
+
+.content-container {
+    @apply bg-slate-100 p-2 rounded-lg shadow-md;
 }

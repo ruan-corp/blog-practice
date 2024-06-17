@@ -5,7 +5,7 @@
         {{ __('Profile') }}
     </x-slot>
 
-    <div>
+    <div class="content-container">
         <div class=" space-y-8">
             <div>
                 <div class="max-w-xl">

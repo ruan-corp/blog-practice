@@ -1,13 +1,10 @@
 @section('title', 'Edição Post')
 
 <x-app-layout>
-    <x-slot name="header">
-        Editar Post
-    </x-slot>
-
     <form
         action="{{ route('posts.update', $post->id) }}"
         method="POST"
+        class="content-container"
     >
         @csrf
 

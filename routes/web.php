@@ -22,7 +22,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/', [CategoriesController::class, 'index'])->name('categories');
         Route::get('/create', [CategoriesController::class, 'create'])->name('create');
         Route::post('/create', [CategoriesController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [CategoriesController::class, 'show'])->name('show');
+        Route::get('/edit/{id}', [CategoriesController::class, 'edit'])->name('edit');
         Route::patch('/edit/{id}', [CategoriesController::class, 'update'])->name('update');
         Route::delete('/delete/{id}', [CategoriesController::class, 'destroy'])->name('destroy');
     });
@@ -32,7 +32,7 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::get('/', [PostsController::class, 'index'])->name('posts');
         Route::get('/create', [PostsController::class, 'create'])->name('create');
         Route::post('/create', [PostsController::class, 'store'])->name('store');
-        Route::get('/edit/{id}', [PostsController::class, 'show'])->name('show');
+        Route::get('/edit/{id}', [PostsController::class, 'edit'])->name('edit');
         Route::post('/edit/{id}', [PostsController::class, 'update'])->name('update');
         Route::post('/delete/{id}', [PostsController::class, 'destroy'])->name('destroy');
     });

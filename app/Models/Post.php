@@ -6,6 +6,7 @@ use App\Events\PostSaving;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
@@ -22,4 +23,9 @@ class Post extends Model
     protected $dispatchesEvents = [
         "saving" => PostSaving::class,
     ];
+
+    protected function getPublishedAtAttribute(string | null $value): string | null
+    {
+        return $value ? Carbon::parse($value)->setTimezone('GMT-3')->format('d/m/y H:i') : null;
+    }
 }

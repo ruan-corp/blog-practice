@@ -16,7 +16,7 @@ class PostsController extends Controller
         return view("sections.posts.posts-page", ["posts" => $posts]);
     }
 
-    public function show(int $id)
+    public function edit(int $id)
     {
         try {
             $post = Post::query()->findOrFail($id);
@@ -39,9 +39,11 @@ class PostsController extends Controller
     {
         $validatedData = $request->validated();
 
+        $validatedData['published_at'] = $this->validateDate($validatedData);
+
         Post::create($validatedData);
 
-        return redirect()->route('posts.posts')->with('message', ['success' => 'post criado com successo']);
+        return redirect()->route('posts.posts')->with('message', ['success' => 'Post criado com successo']);
     }
 
     public function update(PostRequest $postRequest)
@@ -49,6 +51,7 @@ class PostsController extends Controller
         try {
             $post = Post::query()->findOrFail($postRequest->id);
             $validatedData = $postRequest->validated();
+            $validatedData['published_at'] = $this->validateDate($validatedData);
             $post->update($validatedData);
 
             return redirect()->route('posts.posts')->with('message', ['success' => 'Post atualizado com successo']);
@@ -64,11 +67,18 @@ class PostsController extends Controller
             if (!$post->published_at) {
                 $post->delete();
                 return redirect()->route('posts.posts')->with('message', ['success' => 'Post removido com successo']);
-            } else {
-                return redirect()->back()->with('message', ['error' => 'Não se pode deletar posts já publicados']);
             }
+
+            return redirect()->back()->with('message', ['error' => 'Não se pode deletar posts já publicados']);
         } catch (Throwable $th) {
             return redirect()->back()->with('message', ['error' => 'Não foi possivel encontrar o post']);
+        }
+    }
+
+    private function validateDate($validatedData)
+    {
+        if (isset($validatedData['published_at'])) {
+            return $validatedData['published_at'] = now();
         }
     }
 }

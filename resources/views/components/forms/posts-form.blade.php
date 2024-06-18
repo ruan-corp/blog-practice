@@ -1,7 +1,7 @@
 @section('head-imports')
     <x-head.tinymce-config> </x-head.tinymce-config>
 @endsection
-@props(['categories', 'post'])
+@props(['categories', 'post' => null])
 
 <div class="flex flex-col gap-8">
     <div>
@@ -31,59 +31,37 @@
             id="category"
             class="form-input w-96"
         >
-            @if (isset($post))
-                @foreach ($categories as $category)
-                    <option
-                        value="{{ $category->id }}"
-                        {{ $category->id == $post->category_id ? 'selected' : '' }}
-                    >
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            @else
-                @foreach ($categories as $category)
-                    <option
-                        value="{{ $category->id }}"
-                        {{ old('category_id') == $category->id ? 'selected' : '' }}
-                    >
-                        {{ $category->name }}
-                    </option>
-                @endforeach
-            @endif
+            @foreach ($categories as $category)
+                <option
+                    value="{{ $category->id }}"
+                    {{ old('category_id') == $category->id || $post?->category_id == $category->id ? 'selected' : '' }}
+                >
+                    {{ $category->name }}
+                </option>
+            @endforeach
         </select>
         <div>
             <x-inputs.input-error fieldIdentifier="category_id" />
         </div>
     </div>
 
-    @if (isset($post) && !$post->published_at)
+    @if ($post?->published_at)
         <div>
-            <label
-                for="published_at"
-                class="input-label"
-            >Publicado:</label>
-            <input
-                type="checkbox"
-                name="published_at"
-                id="published_at"
-            />
-        </div>
-    @elseif (!isset($post))
-        <div>
-            <label
-                for="published_at"
-                class="input-label"
-            >Publicado:</label>
-            <input
-                type="checkbox"
-                name="published_at"
-                id="published_at"
-                {{ old('published_at') ? 'checked' : '' }}
-            />
+            <p>Post já publicado</p>
         </div>
     @else
         <div>
-            <p>Post já publicado</p>
+            <label
+                for="published_at"
+                class="input-label"
+            >Publicado:</label>
+            <input
+                type="checkbox"
+                name="published_at"
+                id="published_at"
+                value="1"
+                {{ old('published_at') ? 'checked' : '' }}
+            />
         </div>
     @endif
 

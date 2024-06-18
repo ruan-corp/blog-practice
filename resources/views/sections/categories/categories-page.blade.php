@@ -26,7 +26,7 @@
                             <div class="flex gap-2 justify-center">
                                 <a
                                     class="edit-button"
-                                    href="{{ route('categories.show', $category->id) }}"
+                                    href="{{ route('categories.edit', $category->id) }}"
                                 >
                                     Editar
                                 </a>
@@ -57,8 +57,3 @@
         </h3>
     @endif
 </x-app-layout>
-
-<script
-    src="{{ asset('js/confirm-delete.js') }}"
-    defer
-></script>

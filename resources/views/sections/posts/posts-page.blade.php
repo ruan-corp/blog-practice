@@ -35,7 +35,7 @@
                         <td>
                             <div class="flex justify-between mx-2">
                                 <a
-                                    href="{{ route('posts.show', $post->id) }}"
+                                    href="{{ route('posts.edit', $post->id) }}"
                                     class="edit-button"
                                 >Editar</a>
 
@@ -59,5 +59,3 @@
         </table>
     </div>
 </x-app-layout>
-
-<script src="{{ asset('js/confirm-delete.js') }}"></script>

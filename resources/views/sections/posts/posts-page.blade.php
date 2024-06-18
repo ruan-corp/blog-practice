@@ -30,22 +30,10 @@
                         </td>
                         <td>
                             <div class="flex justify-between mx-2">
-                                <a
-                                    href="{{ route('posts.show', $post->id) }}"
-                                    class="edit-button"
-                                >Editar</a>
+                                <x-forms.form-edit-button route="{{ route('posts.show', $post->id) }}" />
 
                                 @if (!$post->published_at)
-                                    <form
-                                        action="{{ route('posts.destroy', $post->id) }}"
-                                        method="POST"
-                                        class="confirm-delete-form"
-                                    >
-                                        @csrf
-                                        <button class="delete-button">
-                                            Remover
-                                        </button>
-                                    </form>
+                                    <x-forms.form-delete-button route="{{ route('posts.destroy', $post->id) }}" />
                                 @endif
                             </div>
                         </td>

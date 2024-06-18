@@ -10,16 +10,8 @@
 }
 
 /* Buttons */
-.edit-button {
-    @apply text-white  bg-blue-600 p-2 rounded-md transition-all hover:bg-blue-800;
-}
-
-.delete-button {
-    @apply text-white min-w-14 bg-red-600 p-2 rounded-md transition-all hover:bg-red-800;
-}
-
 .green-button {
-    @apply text-white w-40 bg-green-600 py-2 rounded-md transition-all hover:bg-green-800;
+    @apply text-white w-40 bg-green-600 py-2 rounded-md transition-all hover:bg-green-800 border-gray-700 border;
 }
 
 /* Form */

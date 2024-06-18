@@ -21,24 +21,13 @@
                             <td>{{ $category->slug }}</td>
                             <td>
                                 <div class="flex justify-between mx-4">
-                                    <a
-                                        class="edit-button"
-                                        href="{{ route('categories.show', $category->id) }}"
-                                    >
-                                        Editar
-                                    </a>
-                                    <form
-                                        method="POST"
-                                        action="{{ route('categories.destroy', $category->id) }}"
-                                        class="confirm-delete-form"
+                                    <x-forms.form-edit-button route="{{ route('categories.show', $category->id) }}" />
+
+                                    <x-forms.form-delete-button
+                                        route="{{ route('categories.destroy', $category->id) }}"
                                         name="{{ $category->name }}"
-                                    >
-                                        @csrf
-                                        @method('delete')
-                                        <button class="delete-button">
-                                            Excluir
-                                        </button>
-                                    </form>
+                                        method="{{ 'delete' }}"
+                                    />
                                 </div>
                             </td>
                         </tr>

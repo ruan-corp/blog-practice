@@ -9,8 +9,12 @@
     <div class="h-14 flex">
         <a
             href="{{ route('home') }}"
-            class="{{ checkActiveUrl('admin') }} w-full flex items-center justify-center font-bold font-xl border-b border-black shadow"
-        >Home</a>
+            class="{{ checkActiveUrl('admin') }} flex justify-center items-center w-full border-b border-black shadow"
+        >
+            <h4>
+                Blog Practice
+            </h4>
+        </a>
     </div>
 
     <ul class="w-64">

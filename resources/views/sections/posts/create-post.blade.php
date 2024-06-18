@@ -1,14 +1,18 @@
 @section('title', 'Criar Post')
 
 <x-app-layout>
-    <form
-        action="{{ route('posts.store') }}"
-        method="POST"
-        class="content-container"
-    >
-        @csrf
-        <x-forms.posts-form :categories="$categories">
+    <div class="content-container">
 
-        </x-forms.posts-form>
-    </form>
+        <x-content-container.title-content-container title="Criação de Post" />
+
+        <form
+            action="{{ route('posts.store') }}"
+            method="POST"
+        >
+            @csrf
+            <x-forms.posts-form :categories="$categories">
+
+            </x-forms.posts-form>
+        </form>
+    </div>
 </x-app-layout>

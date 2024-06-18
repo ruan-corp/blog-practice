@@ -2,6 +2,8 @@
 
 <x-app-layout>
     <div class="content-container">
+        <x-content-container.title-content-container title="Lista de Posts" />
+
         <table class="w-full custom-tables">
             <thead>
                 <tr>

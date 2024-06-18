@@ -15,25 +15,22 @@
     <title> @yield('title')</title>
     @yield('head-imports')
 
-    <!-- Fonts -->
+
     <link
-        rel="preconnect"
-        href="https://fonts.bunny.net"
-    >
-    <link
-        href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap"
+        href="https://fonts.bunny.net/css?family=figtree:300,400,500,600,700&display=swap"
         rel="stylesheet"
     />
+
+    <!-- Scripts -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     <script
         src="https://kit.fontawesome.com/2ff32adba9.js"
         crossorigin="anonymous"
     ></script>
-
-    <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased bg-slate-200 h-screen min-h-screen ">
+<body class="bg-slate-200 h-screen min-h-screen ">
     {{-- Notification Message --}}
     <x-js.notification />
 
@@ -43,7 +40,7 @@
         @include('layouts.components.side-menu')
 
         <!-- Page Content -->
-        <section class="p-4 overflow-y-auto w-full">
+        <section class="p-2 overflow-y-auto w-full">
             {{ $slot }}
         </section>
     </div>

@@ -1,17 +1,19 @@
 @section('title', 'Edição Post')
 
 <x-app-layout>
-    <form
-        action="{{ route('posts.update', $post->id) }}"
-        method="POST"
-        class="content-container"
-    >
-        @csrf
-
-        <x-forms.posts-form
-            :categories="$categories"
-            :post="$post"
+    <div class="content-container">
+        <x-content-container.title-content-container title="Edição de Post" />
+        <form
+            action="{{ route('posts.update', $post->id) }}"
+            method="POST"
         >
-        </x-forms.posts-form>
-    </form>
+            @csrf
+
+            <x-forms.posts-form
+                :categories="$categories"
+                :post="$post"
+            >
+            </x-forms.posts-form>
+        </form>
+    </div>
 </x-app-layout>

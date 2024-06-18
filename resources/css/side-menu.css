@@ -4,11 +4,10 @@
 }
 
 .dropdown-container {
-    @apply ml-4;
 }
 
 .side-menu h4 {
-    @apply text-lg font-semibold;
+    @apply text-lg font-medium;
 }
 
 .active-link {
@@ -16,17 +15,13 @@
 }
 
 .side-menu ul li {
-    @apply border-b border-black shadow px-2;
+    @apply border-b border-black shadow px-3;
 }
 
 .side-menu-link {
-    @apply flex items-center h-10 px-4 font-medium cursor-pointer hover:text-gray-300;
+    @apply ml-6 flex items-center h-10  cursor-pointer hover:text-gray-300;
 }
 
 .side-menu button {
     @apply h-10;
-}
-
-.side-menu a {
-    @apply p-2;
 }

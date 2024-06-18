@@ -4,16 +4,16 @@
 @props(['categories', 'post'])
 
 <div class="flex flex-col gap-8">
-    <div>
+    <div class="w-full">
         <label
             for="title"
-            class="block input-label"
+            class="input-label"
         >Titulo do Post</label>
         <input
             type="text"
             name="title"
             id="title"
-            class="form-input w-96"
+            class="form-input"
             value="{{ $post->title ?? old('title') }}"
         />
         <div>
@@ -21,15 +21,15 @@
         </div>
     </div>
 
-    <div>
+    <div class="w-full">
         <label
             for="category"
-            class="block input-label"
+            class="input-label"
         >Categoria</label>
         <select
             name="category_id"
             id="category"
-            class="form-input w-96"
+            class="form-input"
         >
             @if (isset($post))
                 @foreach ($categories as $category)
@@ -56,6 +56,7 @@
         </div>
     </div>
 
+
     @if (isset($post) && !$post->published_at)
         <div>
             <label
@@ -69,7 +70,7 @@
             />
         </div>
     @elseif (!isset($post))
-        <div>
+        <div class="flex items-center gap-1">
             <label
                 for="published_at"
                 class="input-label"
@@ -94,14 +95,14 @@
         <textarea
             name="content"
             id="editor-content"
-            rows="40"
+            rows="25"
         >{{ $post->content ?? old('content') }}</textarea>
     </div>
 
-    <div class="text-center">
+    <div>
         <button
             type="submit"
-            class="green-button"
+            class="green-button w-full"
         >Confirmar</button>
     </div>
 </div>

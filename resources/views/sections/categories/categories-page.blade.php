@@ -2,6 +2,8 @@
 
 <x-app-layout>
     <div class="content-container">
+        <x-content-container.title-content-container title="Lista de Categorias" />
+
         @if ($categories->isNotEmpty())
             <table class="w-full break-words custom-tables">
                 <thead>

@@ -7,7 +7,7 @@
 }
 
 .custom-tables thead {
-    @apply bg-slate-300 h-14 text-lg;
+    @apply bg-slate-300 h-14;
 }
 
 .custom-tables tbody tr {

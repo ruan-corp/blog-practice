@@ -39,7 +39,7 @@ class PostsController extends Controller
     {
         $validatedData = $request->validated();
 
-        $validatedData['published_at'] = $this->validateDate($validatedData);
+        $validatedData['published_at'] = $this->validatePublishedAt($validatedData);
 
         Post::create($validatedData);
 
@@ -51,7 +51,7 @@ class PostsController extends Controller
         try {
             $post = Post::query()->findOrFail($postRequest->id);
             $validatedData = $postRequest->validated();
-            $validatedData['published_at'] = $this->validateDate($validatedData);
+            $validatedData['published_at'] = $this->validatePublishedAt($validatedData);
             $post->update($validatedData);
 
             return redirect()->route('posts.posts')->with('message', ['success' => 'Post atualizado com successo']);
@@ -75,7 +75,7 @@ class PostsController extends Controller
         }
     }
 
-    private function validateDate($validatedData)
+    private function validatePublishedAt($validatedData)
     {
         if (isset($validatedData['published_at'])) {
             return $validatedData['published_at'] = now();

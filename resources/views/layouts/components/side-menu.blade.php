@@ -5,71 +5,88 @@
     }
 @endphp
 
-<nav class="bg-blue-950 h-full text-white">
-    <div class="bg-blue-900 shadow">
+<nav class="side-menu">
+    <div class="h-14 flex">
         <a
             href="{{ route('home') }}"
-            class="py-6 flex justify-center w-full h-full text-xl font-bold hover:text-gray-400 hover:bg-blue-800 transition-all duration-500"
-        >Home</a>
+            class="{{ checkActiveUrl('admin') }} flex justify-center items-center w-full border-b border-black shadow"
+        >
+            <h4>
+                Blog Practice
+            </h4>
+        </a>
     </div>
-    <ul class="p-2">
-        <li>
-            <x-side-menu.side-menu-link
-                :href="route('categories.categories')"
-                class=" {{ checkActiveUrl('admin/categories') }}"
-            >
-                {{ 'Categorias' }}
-            </x-side-menu.side-menu-link>
-        </li>
 
+    <ul class="w-64">
         <li>
-            <x-side-menu.side-menu-link
-                :href="route('categories.create')"
-                class="{{ checkActiveUrl('admin/categories/create') }}"
-            >
-                {{ 'Criar Categoria' }}
-            </x-side-menu.side-menu-link>
-        </li>
+            <h4>
+                <span class="mr-1">
+                    <i class="fa-regular fa-folder"></i>
+                </span>
+                Categorias
+            </h4>
 
-        <li>
-            <x-side-menu.side-menu-link
-                :href="route('posts.posts')"
-                class="{{ checkActiveUrl('admin/posts/posts') }}"
-            >
-                {{ 'Posts' }}
-            </x-side-menu.side-menu-link>
-        </li>
-
-        <li>
-            <x-side-menu.side-menu-link
-                :href="route('posts.create')"
-                class="{{ checkActiveUrl('admin/posts/create') }}"
-            >
-                {{ 'Criar Post' }}
-            </x-side-menu.side-menu-link>
-        </li>
-
-        <li>
-            <x-side-menu.side-menu-link
-                :href="route('profile.edit')"
-                class="{{ checkActiveUrl('admin/profile') }}"
-            >
-                {{ Auth::user()->name }}
-            </x-side-menu.side-menu-link>
-        </li>
-
-        <li>
-            <form
-                method="POST"
-                action="{{ route('logout') }}"
-            >
-                @csrf
-                <button
-                    class="flex items-center w-full text-gray-200 h-9 font-medium cursor-pointer border-b border-transparent transition-all hover:border-gray-400 hover:text-gray-400"
+            <div class="dropdown-container">
+                <x-side-menu.side-menu-link
+                    :href="route('categories.categories')"
+                    class=" {{ checkActiveUrl('admin/categories') }}"
                 >
-                    Logout
-                </button>
-            </form>
+                    {{ 'Lista de Categorias' }}
+                </x-side-menu.side-menu-link>
+
+                <x-side-menu.side-menu-link
+                    :href="route('categories.create')"
+                    class="{{ checkActiveUrl('admin/categories/create') }}"
+                >
+                    {{ 'Criar Categoria' }}
+                </x-side-menu.side-menu-link>
+            </div>
+        </li>
+
+        <li>
+            <h4>
+                <span class="mr-1">
+                    <i class="fa-regular fa-file-lines"></i>
+                </span>
+                Posts
+            </h4>
+
+            <div class="dropdown-container">
+                <x-side-menu.side-menu-link
+                    :href="route('posts.posts')"
+                    class="{{ checkActiveUrl('admin/posts') }}"
+                >
+                    {{ 'Lista de Posts' }}
+                </x-side-menu.side-menu-link>
+
+                <x-side-menu.side-menu-link
+                    :href="route('posts.create')"
+                    class="{{ checkActiveUrl('admin/posts/create') }}"
+                >
+                    {{ 'Criar Post' }}
+                </x-side-menu.side-menu-link>
+            </div>
+        </li>
+
+        <li>
+            <h4>
+                <span class="mr-1">
+                    <i class="fa-regular fa-circle-user"></i>
+                </span>
+                Perfil
+            </h4>
+
+            <div class="dropdown-container">
+                <x-side-menu.side-menu-link
+                    :href="route('profile.edit')"
+                    class="{{ checkActiveUrl('admin/profile') }}"
+                >
+                    {{ Auth::user()->name }}
+                </x-side-menu.side-menu-link>
+
+            </div>
         </li>
     </ul>
 </nav>
+
+<script src="{{ asset('js/side-menu.js') }}"></script>

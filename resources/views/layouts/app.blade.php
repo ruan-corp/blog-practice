@@ -15,47 +15,33 @@
     <title> @yield('title')</title>
     @yield('head-imports')
 
-    <!-- Fonts -->
+
     <link
-        rel="preconnect"
-        href="https://fonts.bunny.net"
-    >
-    <link
-        href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap"
+        href="https://fonts.bunny.net/css?family=figtree:300,400,500,600,700&display=swap"
         rel="stylesheet"
     />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <script
+        src="https://kit.fontawesome.com/2ff32adba9.js"
+        crossorigin="anonymous"
+    ></script>
 </head>
 
-<body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        <section class="grid grid-cols-6 min-h-screen">
-            {{-- Side Menu --}}
-            <div>
-                @include('layouts.components.side-menu')
-            </div>
+<body class="bg-slate-200 h-screen min-h-screen ">
+    {{-- Notification Message --}}
+    <x-js.notification />
 
-            {{-- Main content container --}}
-            <div class="col-span-5 relative">
-                <!-- Page Heading -->
-                @isset($header)
-                    <header class="bg-white shadow">
-                        <div class="py-6 px-4 font-semibold text-xl text-gray-800 leading-tight">
-                            <h2 class="text-xl text-center w-full">{{ $header }}</h2>
-                        </div>
-                    </header>
-                @endisset
+    {{-- Main content container --}}
+    <div class="flex  h-full">
+        {{-- Side Menu --}}
+        @include('layouts.components.side-menu')
 
-                {{-- Notification Message --}}
-                <x-js.notification />
-
-                <!-- Page Content -->
-                <main class="p-2 overflow-y-auto main-container-height h-full">
-                    {{ $slot }}
-                </main>
-            </div>
+        <!-- Page Content -->
+        <section class="p-2 overflow-y-auto w-full">
+            {{ $slot }}
         </section>
     </div>
 </body>

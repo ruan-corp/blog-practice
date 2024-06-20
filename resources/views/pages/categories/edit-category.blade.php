@@ -1,22 +1,21 @@
 @section('title', 'Editar Categoria')
 
 <x-app-layout>
-    <x-slot name="header">
-        Editar Categoria
-    </x-slot>
+    <div class="content-container">
+        <x-content-container.title-content-container title="Edição de Categoria" />
 
-    <form
-        action="{{ route('categories.update', ['id' => $category->id]) }}"
-        method="POST"
-        class="h-full"
-    >
-        @csrf
-        @method('PATCH')
+        <form
+            action="{{ route('categories.update', ['id' => $category->id]) }}"
+            method="POST"
+        >
+            @csrf
+            @method('PATCH')
 
-        <x-forms.category-form
-            title="Editar Categoria"
-            :category="$category"
-            description="Trocar nome ou descrição da categoria"
-        />
-    </form>
+            <x-forms.category-form
+                title="Editar Categoria"
+                :category="$category"
+                description="Trocar nome ou descrição da categoria"
+            />
+        </form>
+    </div>
 </x-app-layout>

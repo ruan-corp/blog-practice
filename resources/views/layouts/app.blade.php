@@ -46,4 +46,10 @@
     </div>
 </body>
 
+
+<script
+    src="{{ asset('js/confirm-delete.js') }}"
+    defer
+></script>
+
 </html>

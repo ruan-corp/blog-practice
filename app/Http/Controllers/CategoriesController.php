@@ -29,7 +29,7 @@ class CategoriesController extends Controller
         return redirect()->route('categories.categories')->with('message', ['success' => 'Categoria criada com successo']);
     }
 
-    public function show(int $id)
+    public function edit(int $id)
     {
         $category = Category::query()->findOrFail($id);
 

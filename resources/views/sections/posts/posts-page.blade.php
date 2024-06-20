@@ -32,6 +32,7 @@
                         </td>
                         <td>
                             <div class="flex justify-between mx-2">
+                            
                                 <x-forms.form-edit-button route="{{ route('posts.show', $post->id) }}" />
 
                                 @if (!$post->published_at)
@@ -45,5 +46,3 @@
         </table>
     </div>
 </x-app-layout>
-
-<script src="{{ asset('js/confirm-delete.js') }}"></script>

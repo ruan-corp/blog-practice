@@ -54,9 +54,9 @@ class CategoriesController extends Controller
         try {
             $category = Category::query()->findOrFail($id);
 
-            if ($category->delete()) {
-                return redirect()->back()->with('message', ['success' => 'Categoria excluida com successo']);
-            }
+            $category->delete();
+
+            return redirect()->back()->with('message', ['success' => 'Categoria excluida com successo']);
         } catch (Throwable $th) {
             return redirect()->back()->with('message', ['error' => 'Não foi possivel encontrar a categoria']);
         }

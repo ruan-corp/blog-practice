@@ -1,14 +1,12 @@
 @section('title', 'Posts')
 
 <x-app-layout>
-    <x-slot name="header">
-        Lista de Posts
-    </x-slot>
+    <div class="content-container">
+        <x-content-container.title-content-container title="Lista de Posts" />
 
-    <div>
-        <table class="w-full table-fixed">
+        <table class="w-full custom-tables">
             <thead>
-                <tr class="border-y-2 h-10 text-lg">
+                <tr>
                     <th>ID</th>
                     <th>Titulo</th>
                     <th>Categoria</th>
@@ -19,7 +17,7 @@
 
             <tbody>
                 @foreach ($posts as $post)
-                    <tr class="text-center border-b h-20">
+                    <tr>
                         <td>
                             {{ $post->id }}
                         </td>
@@ -34,22 +32,11 @@
                         </td>
                         <td>
                             <div class="flex justify-between mx-2">
-                                <a
-                                    href="{{ route('posts.edit', $post->id) }}"
-                                    class="edit-button"
-                                >Editar</a>
+                            
+                                <x-forms.form-edit-button route="{{ route('posts.show', $post->id) }}" />
 
                                 @if (!$post->published_at)
-                                    <form
-                                        action="{{ route('posts.destroy', $post->id) }}"
-                                        method="POST"
-                                        class="confirm-delete-form"
-                                    >
-                                        @csrf
-                                        <button class="delete-button">
-                                            Remover
-                                        </button>
-                                    </form>
+                                    <x-forms.form-delete-button route="{{ route('posts.destroy', $post->id) }}" />
                                 @endif
                             </div>
                         </td>

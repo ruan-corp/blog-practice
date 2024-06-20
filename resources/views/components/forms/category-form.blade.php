@@ -1,18 +1,11 @@
-@props(['title', 'description', 'category'])
+@props(['category'])
 
-<div class="flex flex-col gap-5 shadow rounded p-8 h-full w-full bg-white">
+<div class="flex flex-col gap-8">
     <div>
-        <h3 class="font-medium text-xl text-gray-900">{{ $title }}</h3>
-        <p class="text-sm text-gray-600 my-1">{{ $description }}</p>
-    </div>
-
-    <div class="form-text-container">
-        <div>
-            <label
-                for="name"
-                class="input-label"
-            >Nome da Categoria</label>
-        </div>
+        <label
+            for="name"
+            class="input-label"
+        >Nome da Categoria</label>
         <input
             type="text"
             name="name"
@@ -23,7 +16,7 @@
         <x-inputs.input-error fieldIdentifier="name" />
     </div>
 
-    <div class="form-text-container">
+    <div>
         <div>
             <label
                 for="description"
@@ -42,7 +35,7 @@
     <div class="flex">
         <button
             type="submit"
-            class="green-button"
+            class="green-button w-full"
         >
             Confirmar
         </button>

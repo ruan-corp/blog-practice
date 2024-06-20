@@ -1,14 +1,13 @@
 @section('title', 'Categorias')
 
 <x-app-layout>
-    <x-slot name="header">
-        Lista de Categorias
-    </x-slot>
+    <div class="content-container">
+        <x-content-container.title-content-container title="Lista de Categorias" />
 
     @if ($categories->isNotEmpty())
-        <table class="table-fixed w-full break-words">
+        <table class="w-full break-words custom-tables">
             <thead>
-                <tr class="border-y-2 h-10 text-lg">
+                <tr>
                     <th>Categoria</th>
                     <th>Descrição</th>
                     <th>Slug</th>
@@ -45,15 +44,37 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @else
-        {{-- Categoria Vazia  --}}
-        <h3 class="text-center text-xl">Nenhuma categoria registrada!
-            <span class="text-blue-800">
-                <a href="{{ route('categories.create') }}">Registrar Categoria</a>
-            </span>
-        </h3>
-    @endif
+                </thead>
+
+                <tbody>
+                    @foreach ($categories as $category)
+                        <tr>
+                            <td>{{ $category->name }}</td>
+                            <td>{{ $category->description }}</td>
+                            <td>{{ $category->slug }}</td>
+                            <td>
+                                <div class="flex justify-between mx-4">
+                                    <x-forms.form-edit-button route="{{ route('categories.show', $category->id) }}" />
+
+                                    <x-forms.form-delete-button
+                                        route="{{ route('categories.destroy', $category->id) }}"
+                                        name="{{ $category->name }}"
+                                        method="{{ 'delete' }}"
+                                    />
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        @else
+            {{-- Categoria Vazia  --}}
+            <h3 class="text-center text-xl">Nenhuma categoria registrada!
+                <span class="text-blue-800">
+                    <a href="{{ route('categories.create') }}">Registrar Categoria</a>
+                </span>
+            </h3>
+        @endif
+    </div>
+
 </x-app-layout>

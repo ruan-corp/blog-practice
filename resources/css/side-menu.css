@@ -3,9 +3,6 @@
     background-color: #212529;
 }
 
-.dropdown-container {
-}
-
 .side-menu h4 {
     @apply text-lg font-medium;
 }

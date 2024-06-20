@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Category\CategoryRequest;
 use App\Models\Category;
-use Throwable;
 
 class CategoriesController extends Controller
 {
@@ -12,12 +11,12 @@ class CategoriesController extends Controller
     {
         $categories = Category::query()->get();
 
-        return view('pages.categories.categories-page', ['categories' => $categories]);
+        return view('pages.categories.categories-index', ['categories' => $categories]);
     }
 
     public function create()
     {
-        return view('pages.categories.create-category');
+        return view('pages.categories.categories-create');
     }
 
     public function store(CategoryRequest $request)
@@ -33,32 +32,24 @@ class CategoriesController extends Controller
     {
         $category = Category::query()->findOrFail($id);
 
-        return view('pages.categories.edit-category', ['category' => $category]);
+        return view('pages.categories.categories-edit', ['category' => $category]);
     }
 
     public function update(CategoryRequest $request)
     {
-        try {
-            $category = Category::query()->findOrFail($request->id);
-            $validatedData = $request->validated();
-            $category->update($validatedData);
+        $category = Category::query()->findOrFail($request->id);
+        $validatedData = $request->validated();
+        $category->update($validatedData);
 
-            return redirect()->route('categories.categories')->with('message', ['success' => 'Categoria editada com successo']);
-        } catch (Throwable $th) {
-            return redirect()->back()->with('message', ['error' => 'Não foi possivel encontrar a categoria']);
-        }
+        return redirect()->route('categories.categories')->with('message', ['success' => 'Categoria editada com successo']);
     }
 
     public function destroy(int $id)
     {
-        try {
-            $category = Category::query()->findOrFail($id);
+        $category = Category::query()->findOrFail($id);
 
-            $category->delete();
+        $category->delete();
 
-            return redirect()->back()->with('message', ['success' => 'Categoria excluida com successo']);
-        } catch (Throwable $th) {
-            return redirect()->back()->with('message', ['error' => 'Não foi possivel encontrar a categoria']);
-        }
+        return redirect()->back()->with('message', ['success' => 'Categoria excluida com successo']);
     }
 }

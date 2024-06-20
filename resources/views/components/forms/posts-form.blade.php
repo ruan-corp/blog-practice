@@ -56,11 +56,17 @@
                 class="input-label"
             >Publicado:</label>
             <input
+                type="hidden"
+                name="published"
+                value="0"
+            />
+
+            <input
                 type="checkbox"
                 name="published"
                 id="published"
                 value="1"
-                {{ old('published') ? 'checked' : '' }}
+                {{ old('psublished') ? 'checked' : '' }}
             />
         </div>
     @endif

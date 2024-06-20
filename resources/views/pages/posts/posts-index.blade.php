@@ -32,8 +32,8 @@
                         </td>
                         <td>
                             <div class="flex justify-between mx-2">
-                            
-                                <x-forms.form-edit-button route="{{ route('posts.show', $post->id) }}" />
+
+                                <x-forms.form-edit-button route="{{ route('posts.edit', $post->id) }}" />
 
                                 @if (!$post->published_at)
                                     <x-forms.form-delete-button route="{{ route('posts.destroy', $post->id) }}" />

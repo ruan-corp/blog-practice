@@ -9,7 +9,7 @@
             method="POST"
         >
             @csrf
-            @method('PATCH')
+            @method('PUT')
 
             <x-forms.category-form
                 title="Editar Categoria"

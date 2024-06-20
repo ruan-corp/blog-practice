@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
@@ -24,8 +25,10 @@ class Post extends Model
         "saving" => PostSaving::class,
     ];
 
-    protected function getPublishedAtAttribute(string | null $value): string | null
+    protected function publishedAt(): Attribute
     {
-        return $value ? Carbon::parse($value)->format('d/m/y H:i') : null;
+        return Attribute::make(
+            get: fn (string | null $value) => $value ? Carbon::parse($value)->format('d/m/y H:i') : null,
+        );
     }
 }

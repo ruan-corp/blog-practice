@@ -15,8 +15,5 @@ class HandlePostSavingListener
     {
         $event->post->slug = Str::slug($event->post->title);
         $event->post->user_id = Auth::user()->id;
-        // if ($event->post->published_at) {
-        //     $event->post->published_at = now();
-        // }
     }
 }

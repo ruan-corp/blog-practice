@@ -2,18 +2,18 @@
 
 namespace App\Events;
 
-use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CategorySaving
+class PostSaving
 {
     use Dispatchable, SerializesModels;
 
-    public Category $category;
+    public Post $post;
 
-    public function __construct(Category $category)
+    public function __construct(Post $post)
     {
-        $this->category = $category;
+        $this->post = $post;
     }
 }

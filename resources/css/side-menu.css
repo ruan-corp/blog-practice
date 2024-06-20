@@ -1,0 +1,24 @@
+.side-menu {
+    @apply block w-64 text-white transition-none;
+    background-color: #212529;
+}
+
+.side-menu h4 {
+    @apply text-lg font-medium;
+}
+
+.active-link {
+    @apply text-green-400 border-gray-400;
+}
+
+.side-menu ul li {
+    @apply border-b border-black shadow px-3;
+}
+
+.side-menu-link {
+    @apply ml-6 flex items-center h-10  cursor-pointer hover:text-gray-300;
+}
+
+.side-menu button {
+    @apply h-10;
+}

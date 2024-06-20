@@ -13,33 +13,33 @@ class PostsController extends Controller
     {
         $posts = Post::query()->get();
 
-        return view("sections.posts.posts-page", ["posts" => $posts]);
+        return view("pages.posts.posts-page", ["posts" => $posts]);
     }
 
     public function edit(int $id)
     {
-        try {
-            $post = Post::query()->findOrFail($id);
-            $categories = Category::query()->get();
+        // try {
+        $post = Post::query()->findOrFail($id);
+        $categories = Category::query()->get();
 
-            return view("sections.posts.edit-post", ["post" => $post, "categories" => $categories]);
-        } catch (Throwable $th) {
-            return redirect()->back()->with("message", ["error" => "Não foi possivel encontrar o post"]);
-        }
+        return view("pages.posts.edit-post", ["post" => $post, "categories" => $categories]);
+        // } catch (Throwable $th) {
+        //     return redirect()->back()->with("message", ["error" => "Não foi possivel encontrar o post"]);
+        // }
     }
 
     public function create()
     {
         $categories = Category::query()->get();
 
-        return view("sections.posts.create-post", ["categories" => $categories]);
+        return view("pages.posts.create-post", ["categories" => $categories]);
     }
 
     public function store(PostRequest $request)
     {
         $validatedData = $request->validated();
 
-        $validatedData['published_at'] = $this->validatePublishedAt($validatedData);
+        $validatedData['published_at'] = $this->getPublishedAt($validatedData);
 
         Post::create($validatedData);
 
@@ -51,7 +51,7 @@ class PostsController extends Controller
         try {
             $post = Post::query()->findOrFail($postRequest->id);
             $validatedData = $postRequest->validated();
-            $validatedData['published_at'] = $this->validatePublishedAt($validatedData);
+            $validatedData['published_at'] = $this->getPublishedAt($validatedData);
             $post->update($validatedData);
 
             return redirect()->route('posts.posts')->with('message', ['success' => 'Post atualizado com successo']);
@@ -75,10 +75,10 @@ class PostsController extends Controller
         }
     }
 
-    private function validatePublishedAt($validatedData)
+    private function getPublishedAt(array $validatedData)
     {
-        if (isset($validatedData['published_at'])) {
-            return $validatedData['published_at'] = now();
+        if (isset($validatedData['published'])) {
+            return now();
         }
     }
 }

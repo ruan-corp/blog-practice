@@ -26,6 +26,6 @@ class Post extends Model
 
     protected function getPublishedAtAttribute(string | null $value): string | null
     {
-        return $value ? Carbon::parse($value)->setTimezone('GMT-3')->format('d/m/y H:i') : null;
+        return $value ? Carbon::parse($value)->format('d/m/y H:i') : null;
     }
 }

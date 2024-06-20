@@ -52,15 +52,15 @@
     @else
         <div>
             <label
-                for="published_at"
+                for="published"
                 class="input-label"
             >Publicado:</label>
             <input
                 type="checkbox"
-                name="published_at"
-                id="published_at"
+                name="published"
+                id="published"
                 value="1"
-                {{ old('published_at') ? 'checked' : '' }}
+                {{ old('published') ? 'checked' : '' }}
             />
         </div>
     @endif

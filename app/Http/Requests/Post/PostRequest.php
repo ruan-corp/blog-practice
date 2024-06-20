@@ -24,7 +24,7 @@ class PostRequest extends FormRequest
         return [
             "title" => ["required", "string"],
             "category_id" => ["required", "integer"],
-            "published_at" => ["boolean"],
+            "published" => ["boolean"],
             "content" => ["required", "string"],
         ];
     }

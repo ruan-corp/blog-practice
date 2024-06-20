@@ -12,12 +12,12 @@ class CategoriesController extends Controller
     {
         $categories = Category::query()->get();
 
-        return view('sections.categories.categories-page', ['categories' => $categories]);
+        return view('pages.categories.categories-page', ['categories' => $categories]);
     }
 
     public function create()
     {
-        return view('sections.categories.create-category');
+        return view('pages.categories.create-category');
     }
 
     public function store(CategoryRequest $request)
@@ -33,7 +33,7 @@ class CategoriesController extends Controller
     {
         $category = Category::query()->findOrFail($id);
 
-        return view('sections.categories.edit-category', ['category' => $category]);
+        return view('pages.categories.edit-category', ['category' => $category]);
     }
 
     public function update(CategoryRequest $request)

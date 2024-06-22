@@ -36,6 +36,8 @@
                     @endforeach
                 </tbody>
             </table>
+
+            {{ $categories->links() }}
         @else
             <h3 class="text-center text-xl">Nenhuma categoria registrada!
                 <span class="text-blue-800">

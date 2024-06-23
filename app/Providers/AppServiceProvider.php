@@ -6,6 +6,7 @@ use App\Events\CategorySaving;
 use App\Events\PostSaving;
 use App\Listeners\Category\GenerateSlugListener;
 use App\Listeners\Post\HandlePostSavingListener;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,6 +33,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Paginator::defaultView("vendor.pagination.custom-pagination");
     }
 }

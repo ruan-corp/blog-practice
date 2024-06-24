@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Events\CategorySaving;
 use App\Events\PostSaving;
 use App\Listeners\Category\GenerateSlugListener;
-use App\Listeners\Post\HandlePostSavingListener;
+use App\Listeners\Post\GeneratePostSlugListener;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
             GenerateSlugListener::class,
         ],
         PostSaving::class => [
-            HandlePostSavingListener::class
+            GeneratePostSlugListener::class
         ]
     ];
 

@@ -8,6 +8,7 @@
             method="POST"
         >
             @csrf
+            @method('PUT')
 
             <x-forms.posts-form
                 :categories="$categories"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Post\PostRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
 class PostsController extends Controller
@@ -36,7 +37,8 @@ class PostsController extends Controller
 
         $validatedData['published_at'] = $this->getPublishedAt($validatedData);
 
-        Post::create($validatedData);
+        $post = new Post($validatedData);
+        $post->forceFill(['user_id' => Auth::user()->id])->save();
 
         return redirect()->route('posts.posts')->with('message', ['success' => 'Post criado com successo']);
     }
@@ -45,7 +47,7 @@ class PostsController extends Controller
     {
         $post = Post::query()->findOrFail($postRequest->id);
         $validatedData = $postRequest->validated();
-        $validatedData['published_at'] = $this->getPublishedAt($validatedData);
+        if ($post->published_at == null) $validatedData['published_at'] = $this->getPublishedAt($validatedData);
         $post->update($validatedData);
 
         return redirect()->route('posts.posts')->with('message', ['success' => 'Post atualizado com successo']);

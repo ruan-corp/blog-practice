@@ -85,6 +85,23 @@
                 </x-side-menu.side-menu-link>
 
             </div>
+
+            <div class="dropdown-container">
+                <form
+                    action="{{ route('logout') }}"
+                    method="POST"
+                    class="side-menu-link"
+                >
+                    @csrf
+                    @method('POST')
+                    <button
+                        type="submit"
+                        class="w-full flex"
+                    >
+                        Logout
+                    </button>
+                </form>
+            </div>
         </li>
     </ul>
 </nav>

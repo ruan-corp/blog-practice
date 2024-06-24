@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth')->prefix('admin')->group(function () {
     Route::get('/', [HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
+    // Logout
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);
+
     // Rotas de perfil
     Route::prefix('profile')->name('profile.')->group(function () {
         Route::get('/', [ProfileController::class, 'edit'])->name('edit');

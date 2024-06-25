@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WritersController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->prefix('admin')->group(function () {
@@ -38,6 +39,12 @@ Route::middleware('auth')->prefix('admin')->group(function () {
         Route::post('/', [PostsController::class, 'store'])->name('store');
         Route::put('/{id}', [PostsController::class, 'update'])->name('update');
         Route::delete('/{id}', [PostsController::class, 'destroy'])->name('destroy');
+    });
+
+    // Rotas de Escritores
+    Route::prefix('writers')->name('writers.')->group(function () {
+        Route::get('/create', [WritersController::class, 'create'])->name('create');
+        Route::post('/', [WritersController::class, 'store'])->name('store');
     });
 });
 

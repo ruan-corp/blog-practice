@@ -71,6 +71,24 @@
         <li>
             <h4>
                 <span class="mr-1">
+                    <i class="fa-solid fa-pencil"></i>
+                </span>
+                Escritores
+            </h4>
+
+            <div class="dropdown-container">
+                <x-side-menu.side-menu-link
+                    :href="route('writers.create')"
+                    class="{{ checkActiveUrl('admin/writers/create') }}"
+                >
+                    Registrar Escritor
+                </x-side-menu.side-menu-link>
+            </div>
+        </li>
+
+        <li>
+            <h4>
+                <span class="mr-1">
                     <i class="fa-regular fa-circle-user"></i>
                 </span>
                 Perfil

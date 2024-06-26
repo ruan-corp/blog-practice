@@ -44,7 +44,10 @@ Route::middleware('auth')->prefix('admin')->group(function () {
     // Rotas de Escritores
     Route::prefix('writers')->name('writers.')->group(function () {
         Route::get('/create', [WritersController::class, 'create'])->name('create');
+        Route::get('/edit/{id}', [WritersController::class, 'edit'])->name('edit');
         Route::post('/', [WritersController::class, 'store'])->name('store');
+        Route::put('/{id}', [WritersController::class, 'update'])->name('update');
+        Route::put('/update_password/{id}', [WritersController::class, 'updatePassword'])->name('updatePassword');
     });
 });
 

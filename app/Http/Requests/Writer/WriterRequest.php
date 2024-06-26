@@ -4,7 +4,7 @@ namespace App\Http\Requests\Writer;
 
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
-
+use Illuminate\Validation\Rule;
 
 class WriterRequest extends FormRequest
 {
@@ -23,10 +23,13 @@ class WriterRequest extends FormRequest
      */
     public function rules(): array
     {
+        $writerId = $this->route('id');
+
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
-            'password' => ['required', 'confirmed', 'min:8'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($writerId)],
+            'password' => ['required', 'sometimes', 'confirmed', 'min:8'],
+            'is_admin' => ['sometimes'],
         ];
     }
 
